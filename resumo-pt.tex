@@ -77,7 +77,7 @@ We believe that such a tool could not only reduce the number of ``small'', speci
 We studied the following topics: 
 
 \begin{itemize}
-	\item{\textbf{Limitations of a smartphone in the implementation of a EUP solution} \\
+	\item{\textbf{Smartphone's limitations in the implementation of a EUP solution} \\
     VPLs can be hard to use in a small screen. How can we use visual elements without overfloading the screen? A solution with zoom is enough?
 	Can we use VPLs in a small screen and work with solutions with a medium-large amount of components?}
 	
@@ -109,9 +109,9 @@ Next we decided to experiment a new language to solve some problems pointed out 
 \subsection{A typed block-based prototype}
 
 \begin{figure}[H]
-\centerline{\includegraphics[scale=.6]{block_example.pdf}}
+\centerline{\includegraphics[scale=.43]{block_example.pdf}}
 \label{fig:block}
-\caption{A block representation.} 
+\caption{A task composed by a set of blocks.} 
 \end{figure}
 
 A block with inputs and outputs is a common representation in software engineering. 
@@ -120,21 +120,23 @@ This metaphor was also thought for EUP, and it was described by Zin in a recent 
 The main idea is: We have a block, with a set of inputs and it returns data into outputs that can be connected with inputs.
 Both outputs and inputs are called connectors and each connector has a type. A set of connected blocks is a block. 
 
-A block  can be shown to the end-user using a box with inputs on the left and outputs on the right. Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. In figure \ref{fig:block} we are summing two integer and producing a new integer.
+A block  can be shown to the end-user using a box with inputs on the left and outputs on the right. 
+Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure shows a task that automatically replies a message with the content ``I am busy. Call you later'' when a message is received from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and  \texttt{Flase},
+that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from  \texttt{True} or  \texttt{False} is send in the  .
 Blocks can be developed by expert programmers and end-users can connect and share them. 
 A set of connected blocks creates a task, and a task is, itself, a block that can be connected with other blocks.
 
 \subsection{Experiments with a rewrite rule system}
 
 Some improvements were made in the prototype that were based on end-users' feedback, but they weren't enough.
-We needed a way to do automatic simplifications in a set of blocks, and other way to convert connectors' types without recorring
+We needed a way to do automatic simplifications in a set of blocks, and other way to convert connectors' types without recurring
 to extra blocks. We tried to use Scala to solve this problems.
 
-Scala has two main features that called our attention: pattern matching and implicit convertions. Pattern matching allow us to search for patterns in a set of connected blocks in an easy way, and implicit conversions let us define some conversions without the need to do casts. In Java, if we want to convert from a String to an Integer we can do: Integer.parseInt(string). In Scala we can define an implicit,
-and everytime a String is used and a Integer was expected, the implicit will be called.
+Scala has two main features that called our attention: pattern matching and implicit conversions. Pattern matching allow us to search for patterns in a set of connected blocks in an easy way, and implicit conversions let us define some conversions without the need to do casts. In Java, if we want to convert from a \texttt{String} to an \texttt{Integer} we can do: Integer.parseInt(string). In Scala we can define an implicit,
+and every time a \texttt{String} is used and a Integer was expected, the implicit will be called.
 
-With this two features we created a rewrite rule system. This system was made so it could automatcly simplify situations like:
-If a set of block has two constants being sumed then create a constant to replace it. In fact, there is no actual replacement,
+With this two features we created a rewrite rule system. This system was made so it could automatically simplify situations like:
+If a set of block has two constants being summed then create a constant to replace it. In fact, there is no actual replacement,
 only a visual abstraction. 
 
 \section{Conclusions}\label{sec:conclui}
