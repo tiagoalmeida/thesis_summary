@@ -18,6 +18,7 @@
 %% English version: comment first (maybe)
 \usepackage{indentfirst}        % portuguese standard for paragraphs
 \usepackage{subfig}
+\usepackage{todonotes}
 %\usepackage{parskip}
 
 %% page layout
@@ -61,52 +62,48 @@ through Re-usable Visual Components Composition}}
 
 \section{Motivation}\label{sec:motiva}
 
-An era where smartphones surpassed the PCs sales has begun \cite{more_smartphones}. In this era, the end-users (the ones that ultimately use the smartphone) 
-are demanding quantity and complexity from their applications and devices. 
-This makes it impractical for a software developer to ``foresee'' every possible combination and explore every valid alternative.
+The era where smartphones sales surpassed PCs has begun \cite{more_smartphones}. In such era, end-users (the ones that ultimately use the smartphone) 
+are demanding quantity and highly customizable applications in their devices. 
+This makes it impractical for a software developers to ``foresee'' every possible development combination and provide all users with the best possible application for him. 
 
-A possible solution is to empower end-users with \emph{end-user programming} (EUP) tools. 
-The main difference between an end-user programmer and a professional programmer is the target user \cite{SotaEUE2011}. 
-A professional programmer programs for an external user, while an end-user programmer programs for himself.
-We can conceive a EUP tool that allows the end-users to explore their necessities in a collaborative framework, where novices and experts can co-exist and share. Expert programmers can
-create the components, and end-users can connect them using a \emph{visual programming language} (VPL).
-We believe that such a tool could not only reduce the number of ``small'', specific-tailored applications, but also foster discovery and experimentation.
+A possible solution to make customizable applications is to empower end-users with \emph{end-user programming} (EUP) tools. 
+The main difference between an end-user programmer and a professional programmer is the target user \cite{SotaEUE2011}: a professional programmer programs for an external user, while an end-user programmer programs for himself\todo{mudar descrição se quiseres}.
+We believe an EUP tool that allows the end-users to explore their necessities in a collaborative framework, where novices and experts can co-exist and share their implementations would provide a solution for the above mentioned problem. With such scenario, expert programmers can create components that end-users can connect using a \emph{visual programming language} (VPL). Such tool could not only reduce the number of ``small'', similar, specific-tailored applications, but also foster discovery and experimentation by end-users.
 
 \section{Objectives}\label{sec:goals}
 
-We studied the following topics: 
+While developing an EUP tool, we set our goals in answering to the following problems with a working prototype:
 
 \begin{itemize}
 	\item{\textbf{Smartphone's limitations in the implementation of a EUP solution} \\
-    VPLs can be hard to use in a small screen. How can we use visual elements without overfloading the screen? A solution with zoom is enough?
-	Can we use VPLs in a small screen and work with solutions with a medium-large amount of components?}
+    VPLs can be hard to use in small screens. How can we use visual elements without overflowing the screen? Is a typical dataflow solution with zoom enough? Can we use VPLs in small screens and work with solutions with medium to large number of components?}
 	
 	\item{\textbf{Defining an abstraction level for a collaborative framework} \\
-	Low abstraction levels may be good for end-users but they can limit the blocks that can be produced by expert programmers.
-	Can we achieve a good abstraction level for both end-users and expert programmers?}
+	Higher abstraction levels may be good for end-users but they can limit the blocks produced by expert programmers. Can we achieve a balanced abstraction level for both end-users and expert programmers?}
   
-	\item{\textbf{Impact of the reuse in EUP} \\
-    How can we approach reuse and incentive end-users to use it?
-    Do we need a market just for components reusing? 
-	Sharing is the only reuse option or there are other options?}
+	\item{\textbf{Block reuse in EUP} \\
+    How can we approach reuse of components and incite end-users to use it?
+    Could we benefit from a market for sharing components? What other reuse possibilities can be explored?}
 	
 	\item{\textbf{Study of a collaborative environment between EUP and expert programmers} \\
-    Does a collaborative environment help end-users? Should end-users have a means to ask for components? 
-    How can expert programmers benefit from this approach? 
-    Do expert programmers also like to connect components instead of programming them?}
+    Does a collaborative environment help end-users? Should end-users have a mean to ask for components? How can expert programmers benefit from this approach? Will expert programmers also prefer to connect components when compared to traditional programming?}
 \end{itemize}
+
+\todo{those not responded to should be referred in the future work. all others should have an answer somewhere bellow}
 
 
 \section{From Android to Scala: Steps into a EUP solution}\label{sec:work}
 
-Before a solution was developed there were research to be made. We started to look into EUP problems \cite{Barriers2004} and then, we explored another area: \emph{End-User Software Engineering} (EUSE).
-Additionally, we found out that VPLs can be used to solve some of those problems, so we also studied this kind of languages.
+For approaching the problems at hand, we started by looking into literature regarding EUP problems \cite{Barriers2004} which quickly raised awareness on another topic: \emph{End-User Software Engineering} (EUSE).
+Additionally, we found out that VPLs are a way to solve some\todo{which? ref} of those problems, so we also studied these languages\todo{which? ref}.
 
-A prototype for Android using concepts from VPLs was developed and improved with end-users feedback. 
+With the gathered knowledge, a prototype for Android using concepts from VPLs was developed and improved according to end-users feedback obtained from informal experimentation \todo{isto é um metodo e tem um nome, descubrir qual é e usar}. 
 
-Next we decided to experiment a new language to solve some problems pointed out by end-users: Scala \cite{ProgrammingScala}.
+Next we decided to experiment a new language to solve some problems pointed out by end-users: Scala \cite{ProgrammingScala}. \todo{why? which problems? ref to section where this is? "as pointed in section X.Y"}
 
 \subsection{A typed block-based prototype}
+
+\todo{review and capitalize titles}
 
 \begin{figure}[H]
 \centerline{\includegraphics[scale=.43]{block_example.pdf}}
@@ -114,40 +111,31 @@ Next we decided to experiment a new language to solve some problems pointed out 
 \caption{A task composed by a set of blocks.} 
 \end{figure}
 
-A block with inputs and outputs is a common representation in software engineering. 
-Black box testing, for instance, uses this metaphor. 
-This metaphor was also thought for EUP, and it was described by Zin in a recent paper \cite{Zin2011}. 
-The main idea is: We have a block, with a set of inputs and it returns data into outputs that can be connected with inputs.
-Both outputs and inputs are called connectors and each connector has a type. A set of connected blocks is a block. 
+Representing a function or algorithm as a block with inputs and outputs is a common approach in software engineering \todo{refs}, p.e., in black box testing\todo{refs}. This metaphor was also thought for EUP, as described by Zin\cite{Zin2011}, where he states that a block is composed by a set of inputs and it returns data into outputs that can in turn be connected with other inputs.
+Both outputs and inputs are called connectors and each connector has a type. A set of connected blocks is a block by itself that might be reused. 
 
-A block  can be shown to the end-user using a box with inputs on the left and outputs on the right. 
-Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure shows a task that automatically replies a message with the content ``I am busy. Call you later'' when a message is received from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and  \texttt{Flase},
-that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from  \texttt{True} or  \texttt{False} is send in the  .
-Blocks can be developed by expert programmers and end-users can connect and share them. 
-A set of connected blocks creates a task, and a task is, itself, a block that can be connected with other blocks.
+A block can be shown to the end-user using a box with inputs on the left and outputs on the right. \todo{n sei qual é a imagem mas s ja for a usar a tua app, diz que ja foi o que desenvolveste}
+Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure shows a task that automatically replies a message with the content ``I am busy. Call you later'' when a message is received from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and  \texttt{False}, that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from \texttt{True} or \texttt{False} is send in the \todo{frase nao acabada, pq?}. Blocks can be developed by expert programmers and end-users can connect and share them. A set of connected blocks define a task, and a task is, itself, a block that can be connected with other blocks to create new tasks.
 
 \subsection{Experiments with a rewrite rule system}
 
-Some improvements were made in the prototype that were based on end-users' feedback, but they weren't enough.
-We needed a way to do automatic simplifications in a set of blocks, and other way to convert connectors' types without recurring
-to extra blocks. We tried to use Scala to solve this problems.
+Despite usability improvements introduced in the prototype based on end-users' feedback, we still needed a way to do automatic simplifications in a set of blocks, and other way to convert connectors' types without recurring
+to extra blocks. We tried to use Scala for solving these problems.
 
-Scala has two main features that called our attention: pattern matching and implicit conversions. Pattern matching allow us to search for patterns in a set of connected blocks in an easy way, and implicit conversions let us define some conversions without the need to do casts. In Java, if we want to convert from a \texttt{String} to an \texttt{Integer} we can do: Integer.parseInt(string). In Scala we can define an implicit,
-and every time a \texttt{String} is used and a Integer was expected, the implicit will be called.
+Scala provided two main features that were relevant for the described problems: pattern matching and implicit conversions. Pattern matching allowed us to search for patterns in a set of connected blocks in an easy way, and implicit conversions allowed us to define some conversions without the need to cast object types. In Java, if we want to convert from a \texttt{String} to \texttt{Integer} we can do: \todo{Integer.parseInt(string) meter isto num texto qq diferente}. In Scala we can define an implicit,
+and every time a \texttt{String} is used and a Integer was expected, the implicit conversion would be automatically called.
 
-With this two features we created a rewrite rule system. This system was made so it could automatically simplify situations like:
-If a set of block has two constants being summed then create a constant to replace it. In fact, there is no actual replacement,
-only a visual abstraction. 
+\todo{nota: this != these}
 
-\section{Conclusions}\label{sec:conclui}
+With these two features we created a rewrite rule system. This system was built to automatically simplify situations such as: when a set of blocks has two constants being summed then create a constant to replace it. In lower level, there is no actual replacement on the system's behavior, but a visual abstraction is provided. 
 
-We couldn't use our rewrite rule system because the integration with Scala in Android didn't work as we expected.
-However, our prototype is fully functional and it can be used to do more tests with end-users.
-We developed a solution for visual overflow that could happen using a VPL in a smartphone. 
+\section{Conclusions and Future Work}\label{sec:conclui}
 
-We collected some feedback from end-users that allowed us to understand what they priorities are.
-We noticed that end-users prefer tasks that have a small amount of blocks. They are not worried with the potentialities
-the system has. Also, we had to do a tutorial to explain some of the concepts involved and our task creation process. Some end-users couldn't understand all concepts at the first usage, but a small oral explanation usually was enough. 
+We couldn't use the rewrite rule system due to the early stage of adoption of the Scala language within Android devices, with slow and troublesome compilation being the more relevant issues. However, our prototype built with Java is fully functional, allowing expert programmers to add new blocks to it and end-users to use these in their own compositions, building customized tasks useful in their daily activities. Regarding the screen size, we took in account the reduce size and provided a scalable solution that splits the composition horizontally, allowing the user to navigate through the several blocks were the data flows in the task \todo{this should be described above somewhere}. 
+
+Collected feedback from end-users allowed us to understand what their priorities and needs, from which we noticed that end-users prefer tasks that have fewer blocks (motivating compositions). They are not worried with the potentialities the system has \todo{no idea what this phrase means}. To speedup the adoption of the application, we included an embedded tutorial, explaining the task creation process. Some end-users couldn't understand the whole process during the first usage, but a small oral explanation was enough for getting them started (providing us with information on how to improve the tutorial). \todo{tutorial should also be somewhere described above} \todo{this shows end-user tests where performed. with how many people? under what circumstances? describe them as 'informal' tests or wtv or more details on tests would be needed..} 
+
+For future work, we intent to perform quasi-experiments with end-users, capturing \todo{data gathered}. Such information will be relevant to understand usability defects in the application, providing us with the necessary information to improve it. After maturity is achieved, we plan to disseminate the application on the Android market. Future versions might include compositions and components sharing between users as downloadable plugins from inside the application itself.
 
 %%English version: comment first, uncomment second
 %\bibliographystyle{unsrt-pt}  % numeric, unsorted refs
