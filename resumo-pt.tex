@@ -62,7 +62,7 @@ through Re-usable Visual Components Composition}}
 
 \section{Motivation}\label{sec:motiva}
 
-The era where smartphones sales surpassed PCs has begun \cite{more_smartphones}. In such era, end-users (the ones that ultimately use the smartphone) 
+The era where smartphones sales surpassed PCs has begun. In such era, end-users (the ones that ultimately use the smartphone) 
 are demanding quantity and highly customizable applications in their devices. 
 This makes it impractical for a software developers to ``foresee'' every possible development combination and provide all users with the best possible application for him. 
 
@@ -85,8 +85,6 @@ While developing an EUP tool, we set our goals in answering to the following pro
     How can we approach reuse of components and incite end-users to use it?
     Could we benefit from a market for sharing components? What other reuse possibilities can be explored?}
 	
-	\item{\textbf{Study of a collaborative environment between EUP and expert programmers} \\
-    Does a collaborative environment help end-users? Should end-users have a mean to ask for components? How can expert programmers benefit from this approach? Will expert programmers also prefer to connect components when compared to traditional programming?}
 \end{itemize}
 
 \section{From Android to Scala: Steps into a EUP solution}\label{sec:work}
@@ -111,11 +109,11 @@ Representing a function or an algorithm as a block, with inputs and outputs, was
 Both outputs and inputs are called connectors and each connector has a type. A set of connected blocks is a block by itself that might be reused. 
 
 A block can be shown to the end-user using a box with inputs on the left and outputs on the right.
-Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure shows a task that automatically replies a message with the content ``I am busy. Call you later'' when a message is received from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and  \texttt{False}, that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from \texttt{True} or \texttt{False} depending on the expression's result. Blocks can be developed by expert programmers and end-users can connect and share them. A set of connected blocks define a task, and a task is, itself, a block that can be connected with other blocks to create new tasks.
+Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure shows a task that automatically replies a message with the content ``I am busy. Call you later'' when a message is received from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and  \texttt{False}, that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from \texttt{True} or \texttt{False} depending on the expression's result. 
 
-Tasks can be created in our prototype through an expansible two column layout. Initially there are two columns on the screen that can be used to add and connects blocks. When the end-users wants to connect blocks to the blocks on the right column he can do a swipe gesture from the right to the left and the blocks from the right column will pass to the left column and a new empty column on the right appears.
+Blocks can be developed by expert programmers and end-users can connect them. A set of connected blocks define a task, and a task is, itself, a block that can be connected with other blocks to create new tasks.
 
-\subsection{Informal Testing}
+Tasks can be created in our prototype through an expansible two column layout. Initially there are two columns on the screen that can be used to add and connects blocks. When the end-users want to connect blocks to the blocks on the right column he can do a swipe gesture from the right to the left and the blocks from the right column will pass to the left column and a new empty column on the right appears.
 
 \subsection{Experiments with a Rewrite Rule System}
 
