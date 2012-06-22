@@ -62,7 +62,7 @@ through Re-usable Visual Components Composition}}
 
 \section{Motivation}\label{sec:motiva}
 
-The era where smartphones sales surpassed PCs and end-users (the ones that ultimately use the smartphone) demand highly customizable applications in quantity for their devices has begun. 
+Smartphones' sales surpassed PCs' sales, along with the number of smartphones' end-users (the ones that ultimately use the smartphone). This end-users want highly customizable applications in quantity for their devices. 
 This makes it impractical for a software developers to ``foresee'' every possible development combination and provide all users with the best possible application for him. 
 
 A possible solution to make customizable applications is to empower end-users with \emph{end-user programming} (EUP) tools. 
@@ -95,22 +95,18 @@ With the gathered knowledge, a prototype for Android using concepts from VPLs wa
 A common problem detected by end-users was the amount of blocks necessary to do simple tasks. To solve this issue we thought in a rewrite rule system and we decided to experiment a new language to do this system: Scala \cite{ProgrammingScala}.
 
 \subsection{A Typed Block-based Prototype}
-
-\todo{review and capitalize titles}
-
 \begin{figure}[H]
 \centerline{\includegraphics[scale=.43]{block_example.pdf}}
 \caption{A task composed by a set of blocks.} 
 \label{fig:block}
 \end{figure}
 
-Representing a function or an algorithm as a block, with inputs and outputs, was already used in software engineering, p.e., in black box testing \cite{BlackBoxTesting}. This metaphor was also thought for EUP, as described by Zin \cite{Zin2011}, where he states that a block is composed by a set of inputs and it returns data into outputs that can, in turn, be connected with other inputs.
-Both outputs and inputs are called connectors and each connector has a type. A set of connected blocks is a block by itself that might be reused. 
+Representing a function or an algorithm as a block, with inputs and outputs, was already used in software engineering, p.e., in black box testing \cite{BlackBoxTesting}, and it was already thought for EUP~\cite{Zin2011}. Both outputs and inputs are called connectors and each connector has a type. An output can be connected with an input and a set of connected blocks creates another block that might be reused. 
 
-A block can be shown to the end-user using a box with inputs on the left and outputs on the right.
-Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure also shows a task that automatically replies a received message with the content ``I am busy. Call you later'' when the message received is from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and \texttt{False}, that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from \texttt{True} or \texttt{False} depending on the expression's result. 
-
+A block can be shown to the end-user using a box with inputs on the left and outputs on the right. 
 Blocks can be developed by expert programmers and end-users can connect them. A set of connected blocks define a task, and a task is, itself, a block that can be connected with other blocks to create new tasks.
+
+Figure \ref{fig:block} shows that a block can connect its outputs with inputs from other block. This figure also shows a task that automatically replies to a received message with the content ``I am busy. Call you later'' when the message received is from the number ``+351910000000''. The equal blocks has two set of inputs: \texttt{A} and  \texttt{B}, that are the values to be compared; \texttt{True} and \texttt{False}, that are the values that will be used in case the expression \texttt{A == B} is true or false. The \texttt{Value} output will hold the value from \texttt{True} or \texttt{False} depending on the expression's result. 
 
 Tasks can be created in our prototype through an expansible two column layout. Initially there are two columns on the screen that can be used to add and connects blocks. When the end-users want to connect blocks to the blocks on the right column he can do a swipe gesture from the right to the left. With this gesture, the blocks from the right column will pass to the left column and a new empty column appears in the right.
 
@@ -130,7 +126,7 @@ We couldn't use the rewrite rule system due to the early stage of adoption of th
 
 Collected feedback from end-users allowed us to understand what their priorities and needs, from which we noticed that end-users prefer tasks that have fewer blocks. We also saw that some end-users couldn't understand the task creation process during the first usage, but a small oral explanation was enough for getting them started. Therefore, we included a small tutorial in the prototype, explaining the task creation process.
 
-As part of our future work, we intent to perform quasi-experiments with end-users to validate our implementation. For that, we will provide end-users with a script to follow and measure their ability to perform each step regarding time, intuitiveness, errors performed and comments. A final questionnaire will provide us with feedback regarding the application and their opinion about it. Such information will be relevant to understand usability defects in the application, providing us with the necessary information to improve it. After maturity is achieved, we plan to publish the application on the Android market. Future versions might include compositions and components sharing between users as downloadable plugins from inside the application itself.
+As part of our future work, we intent to perform quasi-experiments with end-users to validate our implementation. For that, we will provide end-users with a script to follow and measure their ability to perform each step regarding time, intuitiveness, errors performed and comments. A final questionnaire will provide us with feedback regarding the application and their opinion about it. Such information will be relevant to understand usability defects in the application, providing us with the necessary information to improve it. After maturity is achieved, we plan to publish the application on the Android market. Future versions might include blocks (and tasks) sharing between users as downloadable plugins from inside the application itself.
 
 %%English version: comment first, uncomment second
 %\bibliographystyle{unsrt-pt}  % numeric, unsorted refs
